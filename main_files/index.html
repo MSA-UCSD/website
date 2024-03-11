@@ -470,32 +470,45 @@
                 <div class="namaz-time">
                     <img src="./namaz-time-icon-1.png" alt="icon" />
                     <h4>Fajr</h4>
-                    <h5><span id="fajr-time"></span><span>Iqamah:4:15 AM</span></h5>
+                    <h5><span id="fajr-time2"></span></h5>
+                    <h5>&#20;</h5>
+                    <h5>&#20;</h5>
+                    <h5><span>Islamic Center of San Diego (Masjid AbuBakr)</span></h5>
                 </div>
                 <div class="namaz-time">
                     <img src="./namaz-time-icon-2.png" alt="icon" />
-                    <h4>Zuhr</h4>
-                    <h5>01:09 PM<span>Iqamah:1:30 PM</span></h5>
+                    <h4>Dhuhr</h4>
+                    <h5><span id="dhuhr-time"></span></h5>
+                    <h5>&#20;</h5>
+                    <h5><span>Contemplation Lounge</span></h5>
                 </div>
                 <div class="namaz-time">
                     <img src="./namaz-time-icon-3.png" alt="icon" />
                     <h4>Asr</h4>
-                    <h5>6:29 PM<span>Iqamah:7:30 PM</span></h5>
+                    <h5><span id="asr-time"></span></h5>
+                    <h5>&#20;</h5>
+                    <h5><span>Contemplation Lounge</span></h5>
                 </div>
                 <div class="namaz-time">
                     <img src="./namaz-time-icon-4.png" alt="icon" />
-                    <h4>Magrib</h4>
-                    <h5>9:01 PM<span>Iqamah:9:01 PM</span></h5>
+                    <h4>Maghrib</h4>
+                    <h5><span id="maghrib-time2"></span></h5>
+                    <h5>&#20;</h5>
+                    <h5><span>Contemplation Lounge</span></h5>
                 </div>
                 <div class="namaz-time">
                     <img src="./namaz-time-icon-5.png" alt="icon" />
                     <h4>Isha</h4>
-                    <h5>10:10 PM<span>Iqamah:10:45 PM</span></h5>
+                    <h5><span id="isha-time"></span></h5>
+                    <h5>&#20;</h5>
+                    <h5><span>Contemplation Lounge</span></h5>
                 </div>
                 <div class="namaz-time">
                     <img src="./namaz-time-icon-6.png" alt="icon" />
                     <h4>Jummah</h4>
-                    <h5>01:10 PM<span>Iqamah:02:45 PM</span></h5>
+                    <h5>1 PM and 2 PM<span>1:15 PM and 2:15 PM</span></h5>
+                    <h5>&#20;</h5>
+                    <h5><span>Warren Student Activity Center</span></h5>
                 </div>
             </div>
         </div>
@@ -504,10 +517,10 @@
         <div class="container">
             <div class="heading">
                 <img src="./heading-img.png" alt="icon" />
-                <p>Welcome to the Islamic Center</p>
-                <h2>Know The Real History of Islam</h2>
+                <p>Welcome to the MSA at UCSD</p>
+                <!-- <h2>Know The Real History of Islam</h2> -->
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-5">
                     <div class="islamic-history">
                         <p>
@@ -551,7 +564,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <div class="gap">
@@ -1613,6 +1626,9 @@
             document.getElementById('dhuhr-time').innerText = data.data.timings.Dhuhr;
             document.getElementById('asr-time').innerText = data.data.timings.Asr;
             document.getElementById('isha-time').innerText = data.data.timings.Isha;
+            
+            document.getElementById('maghrib-time2').innerText = data.data.timings.Maghrib;
+            document.getElementById('fajr-time2').innerText = data.data.timings.Maghrib;
           } catch (error) {
             console.error('Error:', error);
           }
