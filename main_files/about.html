@@ -14,7 +14,8 @@
     <!-- fancybox -->
     <link rel="stylesheet" href="./jquery.fancybox.min.css" />
     <link rel="stylesheet" href="./nice-select.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6vP0kho8N9+IRvK0p+8n/cP7hSls9pYq0m0yp9ypFnUWle/6w1QD9J1R+vjnB3p" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6vP0kho8N9+IRvK0p+8n/cP7hSls9pYq0m0yp9ypFnUWle/6w1QD9J1R+vjnB3p" crossorigin="anonymous">
 
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="./fontawesome.min.css" />
@@ -151,6 +152,7 @@
                                 <a href="about.html">About</a>
                                 <div class="dropdown">
                                     <a href="about.html">About MSA</a>
+                                    <a href="about.html#const">Constitution</a>
                                     <a href="about.html#committees">Committees</a>
                                 </div>
                             </li>
@@ -178,9 +180,9 @@
                                 <a href="events.html#">Annual Events</a>
                                 <div class="dropdown">
                                     <a href="events.html#iaw">Islam Awareness Week</a>
-                                    <a href="events.html#ramadan">Ramadan</a>
                                     <a href="events.html#jip">Justice in Palestine Week</a>
                                     <a href="events.html#retreat">Retreat</a>
+                                    <a href="events.html#hsc">High School Conference</a>
                             </li>
                             <li class="navbar-dropdown">
                                 <a href="about.html#new">New Muslims</a>
@@ -197,63 +199,91 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="mobile-nav hmburger-menu" id="mobile-nav" style="display:block;">
-        <div class="res-log">
-            <a href="index.html">
-                <img src="assets/img/logo.png" alt="Responsive Logo" class="white-logo">
-            </a>
+        <div class="mobile-nav hmburger-menu" id="mobile-nav" style="display: block">
+            <div class="res-log">
+                <a href="index.html">
+                    <!-- <img src="./logo.png" alt="Responsive Logo" class="white-logo"> -->
+                    <img src="./png.png" style="width: 40%" alt="Responsive Logo" class="white-logo" />
+                </a>
+            </div>
+            <ul>
+                <li >
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="about.html" href="JavaScript:void(0)">About</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="about.html">About MSA</a>
+                        </li>
+                        <li>
+                            <a href="about.html#const">Constitution</a>
+                        </li>
+                        <li>
+                            <a href="about.html#committees">Committees</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="JavaScript:void(0)">Classes</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="classes.html#arabic">Arabic</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#aqeeda">Aqeeda</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#gamal">Skh Jamal Diwan</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#taha">Skh Taha Hassane</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#tarbiya">Tarbiya Halaqas</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="JavaScript:void(0)">Annual Events</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="events.html#iaw">Islam Awareness Week</a>
+                        </li>
+                        <li>
+                            <a href="events.html#jip">Justice in Palestine Week</a>
+                        </li>
+                        <li>
+                            <a href="events.html#retreat">Retreat</a>
+                        </li>
+                        <li>
+                            <a href="events.html#hsc">High School Conference</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="about.html#new">New Muslims</a>
+                </li>
+                <li>
+                    <a href="donations.html">Donations</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+            <a href="JavaScript:void(0)" id="res-cross"></a>
         </div>
-        <ul>
-            <li class="menu-item-has-children"><a href="JavaScript:void(0)">Home</a>
-                <ul class="sub-menu">
-                    <li><a href="index.html">home 1</a></li>
-                    <li><a href="index-2.html">home 2</a></li>
-                </ul>
-            </li>
-            <li><a href="about.html">about</a></li>
-            <li class="menu-item-has-children"><a href="JavaScript:void(0)">Courses</a>
-                <ul class="sub-menu">
-                    <li><a href="our-courses.html">our courses</a></li>
-                    <li><a href="courses-details.html">courses details</a></li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children"><a href="JavaScript:void(0)">campaigns</a>
-                <ul class="sub-menu">
-                    <li><a href="our-campaigns.html">our campaigns</a></li>
-                    <li><a href="campaign-details.html">campaign details</a></li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children"><a href="JavaScript:void(0)">pages</a>
-                <ul class="sub-menu">
-                    <li><a href="our-scholar.html">our scholar</a></li>
-                    <li><a href="scholar-details.html">scholar details</a></li>
-                    <li><a href="our-events.html">our events</a></li>
-                    <li><a href="pricing-packages.html">pricing packages</a></li>
-                    <li><a href="404.html">404</a></li>
-                </ul>
-            </li>
-            <li class="menu-item-has-children"><a href="JavaScript:void(0)">News</a>
-                <ul class="sub-menu">
-                    <li><a href="our-blog.html">our blog</a></li>
-                    <li><a href="blog-details.html">blog details</a></li>
-                </ul>
-            </li>
-            <li><a href="Contact.html">Contact</a></li>
-        </ul>
-        <a href="JavaScript:void(0)" id="res-cross"></a>
-    </div>
-  </header>
-  <!-- header end -->
+    </header>
+    <!-- header end -->
     <section class="bannr-section" style="background-image: url(./retreat23.jpeg);">
         <div class="container">
             <div class="bannr-text">
                 <img src="assets/img/heading-img.png" alt="icon">
                 <h2>About</h2>
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
-                  </li>
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
                     <li class="breadcrumb-item active" aria-current="page">About</li>
                 </ol>
             </div>
@@ -269,7 +299,12 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="islamic-history">
-                        <p>MSA at UCSD seeks to advance and retain the Muslim presence in the academic sphere while maintaining a climate conducive to harmonizing Islamically advised lifestyles with the lives of Muslims in the university and workforce. By serving as a center of social, educational, and tangible resources, MSA at UCSD intends to strengthen members to embrace Islamic values as a source of guidance in their goals to contribute to the well-being of the public and attain spiritual fulfillment as individuals.</p>
+                        <p>MSA at UCSD seeks to advance and retain the Muslim presence in the academic sphere while
+                            maintaining a climate conducive to harmonizing Islamically advised lifestyles with the lives
+                            of Muslims in the university and workforce. By serving as a center of social, educational,
+                            and tangible resources, MSA at UCSD intends to strengthen members to embrace Islamic values
+                            as a source of guidance in their goals to contribute to the well-being of the public and
+                            attain spiritual fulfillment as individuals.</p>
                         <ul class="list">
                             <li>Prayer Room</li>
                             <li>Educational Growth</li>
@@ -311,32 +346,59 @@
             <div class="fun-facts">
                 <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
                     <div class="count-style">
-                      <h2 data-max="35" class="ms-animated">35<sup>+</sup></h2>
+                        <h2 data-max="35" class="ms-animated">35<sup>+</sup></h2>
                     </div>
                     <h5>Years of MSA @ UCSD</h5>
                     <img src="assets/img/fun-facts-1.png" alt="fun-facts">
                 </div>
                 <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
                     <div class="count-style">
-                      <h2 data-max="100" class="ms-animated">100<sup>+</sup></h2>
+                        <h2 data-max="100" class="ms-animated">100<sup>+</sup></h2>
                     </div>
                     <h5>Active Members</h5>
                     <img src="assets/img/fun-facts-2.png" alt="fun-facts">
                 </div>
                 <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
                     <div class="count-style">
-                      <h2 data-max="15" class="ms-animated">15<sup>+</sup></h2>
+                        <h2 data-max="15" class="ms-animated">15<sup>+</sup></h2>
                     </div>
                     <h5>Visting Speakers Per Year</h5>
                     <img src="assets/img/fun-facts-3.png" alt="fun-facts">
                 </div>
                 <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
                     <div class="count-style">
-                      <h2 data-max="26" class="ms-animated">100<sup>+</sup></h2>
+                        <h2 data-max="26" class="ms-animated">100<sup>+</sup></h2>
                     </div>
                     <h5>Events Per Year</h5>
                     <img src="assets/img/fun-facts-4.png" alt="fun-facts">
                 </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="gap position-relative">
+        <div class="container" id = "const">
+            <div class="heading">
+                <img src="assets/img/heading-img.png" alt="icon">
+                <p>MSA UCSD</p>
+                <h2>Constitution</h2>
+            </div>
+            <div class="row">
+
+                <div class="islamic-history">
+                    <center>
+                        <p>The Constitution details the foundation of all MSA programming and it is the skeleton that
+                            shapes the way MSA is run. Like any other document used to guide institutions, it gets
+                            updated in order to stay relevant.</p>
+
+
+                        <a href="https://docs.google.com/document/d/1Q5UEV3sQXb3Z0pd-OhJ26XuYqb2KMi1tT9ryFLKM8Hk/edit?pli=1"
+                            target="_blank" class="btn">View Constitution</a>
+                    </center>
+                </div>
+
             </div>
         </div>
     </section>
@@ -345,14 +407,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="heading two"   id = "new">
+                    <div class="heading two" id="new">
                         <p>Welcome</p>
                         <h2>New Muslims!</h2>
                         <h6>If you have any questions please contact us DMing our account on Instagram!</h6>
                         <a href="https://www.instagram.com/direct/t/110472100346514" class="btn">DM to Join Chats!</a>
                         <br>
                         <br>
-<!-- 
+                        <!-- 
                         <div class="wrapper">
                             <h4>Surah Falaq</h4>
                             <h5>(Abd-ur-Rahman)</h5>
@@ -372,7 +434,8 @@
                         </div> -->
                         <h6>Click Below</h6>
                         <br>
-                        <span>For new Muslims, we recommend the New Muslim Guide, which you can view or download below!</span>
+                        <span>For new Muslims, we recommend the New Muslim Guide, which you can view or download
+                            below!</span>
                         <a href="assets/pdf/The-New-Muslim-Guide-English.pdf" class="btn">View or Download</a>
                     </div>
                 </div>
@@ -380,7 +443,7 @@
         </div>
     </section>
     <section class="gap">
-        <div class="container" id = "committees">
+        <div class="container" id="committees">
             <div class="heading">
                 <img src="assets/img/heading-img.png" alt="icon">
                 <p>MSA UCSD</p>
@@ -477,7 +540,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-logo">
-                            <img src="./png.png" style="width: 40%"alt="logo">
+                            <img src="./png.png" style="width: 40%" alt="logo">
                             <!-- <h3>MSA UCSD</h3> -->
                         </div>
                     </div>
@@ -486,16 +549,18 @@
                             <h4>Connect with us</h4>
                             <ul class="social-media">
                                 <li>
-                                  <a href="https://www.instagram.com/msaucsd/">
-                                    <i class="fab fa-instagram icon"></i></a>
+                                    <a href="https://www.instagram.com/msaucsd/">
+                                        <i class="fab fa-instagram icon"></i></a>
                                 </li>
                                 <li>
-                                  <a href="https://www.youtube.com/@msa-ucsd"><i class="fab fa-youtube icon"></i></a>
+                                    <a href="https://www.youtube.com/@msa-ucsd"><i class="fab fa-youtube icon"></i></a>
                                 </li>
                                 <li>
-                                  <a href="https://www.facebook.com/groups/msaucsd"><i class="fab fa-facebook icon"></i></a>
+                                    <a href="https://www.facebook.com/groups/msaucsd"><i
+                                            class="fab fa-facebook icon"></i></a>
                                 </li>
-                                <li><a href="https://www.linkedin.com/company/muslim-student-association-ucsd"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/muslim-student-association-ucsd"><i
+                                            class="fa-brands fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -514,28 +579,28 @@
     <!-- search-popup end -->
     <!-- progress -->
     <div id="progress">
-          <span id="progress-value"><i class="fa-solid fa-up-long"></i></span>
+        <span id="progress-value"><i class="fa-solid fa-up-long"></i></span>
     </div>
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script>
         async function fetchPrayerTimes() {
-          try {
-            const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
-            const data = await response.json();
-            document.getElementById('fajr-time').innerText = data.data.timings.Fajr;
-            document.getElementById('maghrib-time').innerText = data.data.timings.Maghrib;
-            document.getElementById('dhuhr-time').innerText = data.data.timings.Dhuhr;
-            document.getElementById('asr-time').innerText = data.data.timings.Asr;
-            document.getElementById('isha-time').innerText = data.data.timings.Isha;
-          } catch (error) {
-            console.error('Error:', error);
-          }
+            try {
+                const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
+                const data = await response.json();
+                document.getElementById('fajr-time').innerText = data.data.timings.Fajr;
+                document.getElementById('maghrib-time').innerText = data.data.timings.Maghrib;
+                document.getElementById('dhuhr-time').innerText = data.data.timings.Dhuhr;
+                document.getElementById('asr-time').innerText = data.data.timings.Asr;
+                document.getElementById('isha-time').innerText = data.data.timings.Isha;
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
         fetchPrayerTimes();
-        
-      </script>
-      
+
+    </script>
+
     <script src="https://kit.fontawesome.com/97ac8d9bb6.js" crossorigin="anonymous"></script>
     <script src="assets/js/jquery.nice-select.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
@@ -543,7 +608,7 @@
     <!-- fancybox -->
     <script src="assets/js/audioplayer.js"></script>
     <script>
-        $(function() {
+        $(function () {
             $('audio').audioPlayer();
         });
     </script>
