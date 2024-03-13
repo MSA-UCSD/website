@@ -476,7 +476,8 @@
                               </svg>
                             </i>
                         </a> -->
-                        <img src="./panel.jpeg" alt="img">
+                        <!-- <img src="./panel.jpeg" alt="img"> -->
+                        <img src="./pray.jpeg" alt="img">
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -584,27 +585,58 @@
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script>
+// async function fetchPrayerTimes() {
+//   try {
+//     const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
+//     const data = await response.json();
+
+//     // Function to convert military time to standard time
+//     const convertTime = (time) => {
+//       let [hours, minutes] = time.split(':');
+//       const suffix = hours >= 12 ? "PM" : "AM";
+//       hours = ((hours + 11) % 12 + 1);
+//       return `${hours}:${minutes} ${suffix}`;
+//     };
+
+//     // Applying the conversion to Fajr and Maghrib times
+//     document.getElementById('fajr-time2').innerText = convertTime(data.data.timings.Fajr);
+//     document.getElementById('maghrib-time2').innerText = convertTime(data.data.timings.Maghrib);
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// }
+// fetchPrayerTimes();
+
+
+
+
+
+
 async function fetchPrayerTimes() {
   try {
     const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
     const data = await response.json();
+    const prayers = ['Fajr', 'Maghrib'];
 
-    // Function to convert military time to standard time
-    const convertTime = (time) => {
-      let [hours, minutes] = time.split(':');
-      const suffix = hours >= 12 ? "PM" : "AM";
+    prayers.forEach(prayer => {
+      let time = data.data.timings[prayer];
+      let hours = parseInt(time.split(':')[0]);
+      let minutes = time.split(':')[1];
+      let suffix = hours >= 12 ? "PM" : "AM";
       hours = ((hours + 11) % 12 + 1);
-      return `${hours}:${minutes} ${suffix}`;
-    };
+      let formattedTime = hours.toString() + ':' + minutes + ' ' + suffix;
+      document.getElementById(prayer.toLowerCase() + '-time').innerText = formattedTime;
+    });
 
-    // Applying the conversion to Fajr and Maghrib times
-    document.getElementById('fajr-time').innerText = convertTime(data.data.timings.Fajr);
-    document.getElementById('maghrib-time').innerText = convertTime(data.data.timings.Maghrib);
+    // For Maghrib and Fajr in specific elements if needed
+
   } catch (error) {
     console.error('Error:', error);
   }
 }
 fetchPrayerTimes();
+
+        
     </script>
 
     <script src="https://kit.fontawesome.com/97ac8d9bb6.js" crossorigin="anonymous"></script>
