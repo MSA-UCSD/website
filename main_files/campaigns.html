@@ -582,18 +582,29 @@
           try {
             const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
             const data = await response.json();
-            document.getElementById('fajr-time').innerText = data.data.timings.Fajr;
-            document.getElementById('maghrib-time').innerText = data.data.timings.Maghrib;
-            document.getElementById('dhuhr-time').innerText = data.data.timings.Dhuhr;
-            document.getElementById('asr-time').innerText = data.data.timings.Asr;
-            document.getElementById('isha-time').innerText = data.data.timings.Isha;
+            const prayers = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+        
+            prayers.forEach(prayer => {
+              let time = data.data.timings[prayer];
+              let hours = parseInt(time.split(':')[0]);
+              let minutes = time.split(':')[1];
+              let suffix = hours >= 12 ? "PM" : "AM";
+              hours = ((hours + 11) % 12 + 1);
+              let formattedTime = hours.toString() + ':' + minutes + ' ' + suffix;
+              document.getElementById(prayer.toLowerCase() + '-time').innerText = formattedTime;
+            });
+        
+            // For Maghrib and Fajr in specific elements if needed
+            document.getElementById('maghrib-time2').innerText = document.getElementById('maghrib-time').innerText;
+            document.getElementById('fajr-time2').innerText = document.getElementById('fajr-time').innerText;
           } catch (error) {
             console.error('Error:', error);
           }
         }
         fetchPrayerTimes();
         
-      </script>
+                
+              </script>
       
     <script src="https://kit.fontawesome.com/97ac8d9bb6.js" crossorigin="anonymous"></script>
     <script src="assets/js/jquery.nice-select.min.js"></script>
