@@ -100,7 +100,8 @@
 
 :root {
   --theme-colour: #fbc50b;
-  --common-colour: #007d3a;
+  /* --common-colour: #007d3a; */
+  --common-colour: #386c5c;
   --common-font: 'Sawarabi Mincho'; 
 }
 body,html {
