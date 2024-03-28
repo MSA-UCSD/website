@@ -8,4 +8,4 @@ This repository contains the source code for the UCSD Muslim Students Associatio
 - **CSS**: For styling the web pages
 - **JavaScript**: For interactive elements
 
-To see the code in action, visit the site at [msaucsd.org](https://msaucsd.org).
+To see the code in action, visit the site at [msaucsd.com](https://msaucsd.com).
