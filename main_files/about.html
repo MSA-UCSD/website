@@ -207,7 +207,7 @@
                 </a>
             </div>
             <ul>
-                <li >
+                <li>
                     <a href="index.html">Home</a>
                 </li>
                 <li class="menu-item-has-children">
@@ -379,7 +379,7 @@
     </section>
 
     <section class="gap position-relative">
-        <div class="container" id = "const">
+        <div class="container" id="const">
             <div class="heading">
                 <img src="assets/img/heading-img.png" alt="icon">
                 <p>MSA UCSD</p>
@@ -410,38 +410,68 @@
                     <div class="heading two" id="new">
                         <p>Welcome</p>
                         <h2>New Muslims!</h2>
-                        <h6>If you have any questions please contact us DMing our account on Instagram!</h6>
+                        <h6>If you have any questions, please contact us by DMing our account on Instagram!</h6>
                         <a href="https://www.instagram.com/direct/t/110472100346514" class="btn">DM to Join Chats!</a>
-                        <br>
-                        <br>
-                        <!-- 
-                        <div class="wrapper">
-                            <h4>Surah Falaq</h4>
-                            <h5>(Abd-ur-Rahman)</h5>
-                            <audio preload="auto" controls>
-                                <source src="assets/audio/surat-alfalaq.mp3">
-                            </audio>
-                        </div> -->
                     </div>
                 </div>
                 <div class="offset-lg-1 col-lg-5">
                     <div class="support-us" style="background-image: url(assets/img/color-bg.jpg);">
                         <h4>The New Muslim Guide</h4>
-                        <!-- <div class="progressbar">
-                            <div class="circle" data-percent="85">
-                                <div>85%</div>
-                            </div>
-                        </div> -->
                         <h6>Click Below</h6>
-                        <br>
                         <span>For new Muslims, we recommend the New Muslim Guide, which you can view or download
                             below!</span>
                         <a href="assets/pdf/The-New-Muslim-Guide-English.pdf" class="btn">View or Download</a>
                     </div>
                 </div>
             </div>
+            <!-- New row for the YouTube playlist with improved styling, hidden on mobile -->
+            <div class="row justify-content-center mt-5 d-none d-md-flex">
+                <div class="col-12 text-center mb-4" style="margin-top: -200px">
+                    <div class="heading two">
+                        <center>
+                            <h2 style="color: #ffffff; padding-bottom: 5px;">The 5 Pillars of Islam Playlist</h2>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-12 col-md-10 col-lg-8">
+                    <!-- Responsive Embed YouTube Playlist -->
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe class="embed-responsive-item"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            src="https://www.youtube.com/embed/videoseries?list=PLzlw6ktB1nfKYvJIC9k8Jnx-B2kWF3xb-"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+
+    <style>
+        .embed-responsive-item {
+            pointer-events: none;
+        }
+    </style>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var iframe = document.querySelector('.embed-responsive-item');
+
+            iframe.addEventListener('click', function () {
+                this.style.pointerEvents = 'auto';
+            });
+
+            iframe.addEventListener('mouseleave', function () {
+                this.style.pointerEvents = 'none';
+            });
+        });
+
+    </script>
+
+
     <section class="gap">
         <div class="container" id="committees">
             <div class="heading">
@@ -471,14 +501,16 @@
                     <div class="video position-relative">
                         <a data-fancybox="" href="https://youtu.be/lSvKE_m2Ong">
                             <i>
-                              <svg width="11" height="17" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M11 8.49951L0.5 0.27227L0.5 16.7268L11 8.49951Z" fill="#000"></path>
-                              </svg>
+                                <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 8.49951L0.5 0.27227L0.5 16.7268L11 8.49951Z" fill="#000"></path>
+                                </svg>
                             </i>
                         </a>
                         <!-- <img src="./panel.jpeg" alt="img"> -->
-                        <img src="assets/img/os.png" alt="img" style = "width: 50%;">
-                        <h5 style = "padding-top: 20px; font-family: var(--common-font);">A message from Sheikh Omar Suleiman!</h5>
+                        <img src="assets/img/os.png" alt="img" style="width: 50%;">
+                        <h5 style="padding-top: 20px; font-family: var(--common-font);">A message from Sheikh Omar
+                            Suleiman!</h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -564,7 +596,7 @@
                                 <li><a href="https://www.linkedin.com/company/muslim-student-association-ucsd"><i
                                             class="fa-brands fa-linkedin"></i></a></li>
                             </ul>
-                        </div>                        <br>    
+                        </div> <br>
                     </div>
                 </div>
     </footer>
@@ -586,58 +618,58 @@
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script>
-// async function fetchPrayerTimes() {
-//   try {
-//     const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
-//     const data = await response.json();
+        // async function fetchPrayerTimes() {
+        //   try {
+        //     const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
+        //     const data = await response.json();
 
-//     // Function to convert military time to standard time
-//     const convertTime = (time) => {
-//       let [hours, minutes] = time.split(':');
-//       const suffix = hours >= 12 ? "PM" : "AM";
-//       hours = ((hours + 11) % 12 + 1);
-//       return `${hours}:${minutes} ${suffix}`;
-//     };
+        //     // Function to convert military time to standard time
+        //     const convertTime = (time) => {
+        //       let [hours, minutes] = time.split(':');
+        //       const suffix = hours >= 12 ? "PM" : "AM";
+        //       hours = ((hours + 11) % 12 + 1);
+        //       return `${hours}:${minutes} ${suffix}`;
+        //     };
 
-//     // Applying the conversion to Fajr and Maghrib times
-//     document.getElementById('fajr-time2').innerText = convertTime(data.data.timings.Fajr);
-//     document.getElementById('maghrib-time2').innerText = convertTime(data.data.timings.Maghrib);
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// }
-// fetchPrayerTimes();
-
-
+        //     // Applying the conversion to Fajr and Maghrib times
+        //     document.getElementById('fajr-time2').innerText = convertTime(data.data.timings.Fajr);
+        //     document.getElementById('maghrib-time2').innerText = convertTime(data.data.timings.Maghrib);
+        //   } catch (error) {
+        //     console.error('Error:', error);
+        //   }
+        // }
+        // fetchPrayerTimes();
 
 
 
 
-async function fetchPrayerTimes() {
-  try {
-    const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
-    const data = await response.json();
-    const prayers = ['Fajr', 'Maghrib'];
 
-    prayers.forEach(prayer => {
-      let time = data.data.timings[prayer];
-      let hours = parseInt(time.split(':')[0]);
-      let minutes = time.split(':')[1];
-      let suffix = hours >= 12 ? "PM" : "AM";
-      hours = ((hours + 11) % 12 + 1);
-      let formattedTime = hours.toString() + ':' + minutes + ' ' + suffix;
-      document.getElementById(prayer.toLowerCase() + '-time').innerText = formattedTime;
-    });
 
-    // For Maghrib and Fajr in specific elements if needed
+        async function fetchPrayerTimes() {
+            try {
+                const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
+                const data = await response.json();
+                const prayers = ['Fajr', 'Maghrib'];
 
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-fetchPrayerTimes();
+                prayers.forEach(prayer => {
+                    let time = data.data.timings[prayer];
+                    let hours = parseInt(time.split(':')[0]);
+                    let minutes = time.split(':')[1];
+                    let suffix = hours >= 12 ? "PM" : "AM";
+                    hours = ((hours + 11) % 12 + 1);
+                    let formattedTime = hours.toString() + ':' + minutes + ' ' + suffix;
+                    document.getElementById(prayer.toLowerCase() + '-time').innerText = formattedTime;
+                });
 
-        
+                // For Maghrib and Fajr in specific elements if needed
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        fetchPrayerTimes();
+
+
     </script>
 
     <script src="https://kit.fontawesome.com/97ac8d9bb6.js" crossorigin="anonymous"></script>
