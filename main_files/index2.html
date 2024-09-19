@@ -100,11 +100,13 @@
 @media (max-width: 768px) {
             #hadithText {
                 white-space: normal; /* Ensure text wraps */
-                display: block; /* Ensure it behaves normally */
+                display: block;
                 padding-left: 0;
-                animation: none; /* Disable the scrolling animation */
+                animation: none !important; /* Completely disable animation */
                 font-size: 16px;
-                text-align: left;
+                text-align: center; /* Center the text for mobile */
+                transform: none !important; /* Remove any transforms */
+                margin: 0 auto; /* Center the text block */
             }
         }
 
