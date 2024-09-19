@@ -66,55 +66,64 @@
 
  </style>
    
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function fetchHadiths() {
+            fetch('hadiths/sahih_hadiths.xlsx') // Replace with your actual Excel file path
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-<script>
-    async function fetchHadiths() {
-        try {
-            const response = await fetch('hadiths/sahih_hadiths.csv'); // Make sure the path is correct
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.text();
+                    // Log the headers for debugging
+                    console.log("Headers in the Excel file:", jsonData[0]);
 
-            // Parse CSV data
-            const hadiths = parseCSV(data);
-
-            // Choose a random hadith
-            const randomHadith = hadiths[Math.floor(Math.random() * hadiths.length)];
-
-            // Update the hadithText with the English text
-            document.getElementById('hadithText').textContent = randomHadith.text_en || "No hadith available.";
-
-        } catch (error) {
-            console.error('Error fetching the CSV file:', error);
-            document.getElementById('hadithText').textContent = "No hadith available.";
+                    parseExcelData(jsonData);
+                })
+                .catch(error => {
+                    console.error('Error fetching the Excel file:', error);
+                    document.getElementById("hadithText").textContent = 'Error loading hadith.';
+                });
         }
-    }
 
-    function parseCSV(csv) {
-        const lines = csv.split('\n');
-        const result = [];
-        const headers = lines[0].split(',');
+        function parseExcelData(data) {
+            const headers = data[0]; // First row is the header
+            console.log("Detected headers:", headers); // Log headers for debugging
+            
+            // Find the column index for 'text_en'
+            const textEnIndex = headers.findIndex(header => header && header.toLowerCase().trim() === 'text_en');
 
-        for (let i = 1; i < lines.length; i++) {
-            const obj = {};
-            const currentline = lines[i].split(',');
-
-            for (let j = 0; j < headers.length; j++) {
-                obj[headers[j].trim()] = currentline[j].trim();
+            if (textEnIndex === -1) {
+                console.error("Column 'text_en' not found in the Excel file.");
+                document.getElementById("hadithText").textContent = 'No hadith available.';
+                return;
             }
-            result.push(obj);
-        }
-        return result;
-    }
 
-    // Call fetchHadiths on page load
-    document.addEventListener('DOMContentLoaded', fetchHadiths);
+            const result = [];
+            for (let i = 1; i < data.length; i++) {
+                const row = data[i];
+
+                if (row.length > textEnIndex && row[textEnIndex]) {
+                    let hadithText = row[textEnIndex].trim();
+                    if (hadithText) {
+                        result.push(hadithText);
+                    }
+                }
+            }
+
+            if (result.length > 0) {
+                document.getElementById("hadithText").textContent = result[0]; // Show the first hadith
+            } else {
+                document.getElementById("hadithText").textContent = 'No hadith available.';
+            }
+        }
+
+        // Call the function to load the hadiths from the Excel file
+        fetchHadiths();
+    });
 </script>
-
-    </script>
- 
- 
     <body class="page-loaded">
         <div class="preloader">
             <div class="loader">
@@ -1729,7 +1738,7 @@ fetchPrayerTimes();
 
         
       </script>
-      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="https://kit.fontawesome.com/97ac8d9bb6.js" crossorigin="anonymous"></script>
       
 </body>
