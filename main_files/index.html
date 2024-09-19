@@ -29,6 +29,189 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
+<div id="hadith-section">
+    <span id="close-hadith" onclick="closeHadith()">×</span> <!-- Close Button -->
+    <h1 id="hadithTitle">Hadith of the Week</h1>
+    <p id="hadithText"></p>
+  </div>
+  
+ 
+
+ <style>
+#hadith-section {
+  background-color: #2e6b58;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  font-size: 1.2em;
+  overflow: hidden;
+} 
+
+#close-hadith {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  background: none;
+  border: none;
+}
+
+#close-hadith:hover {
+  color: #ffcccc;
+}
+
+#hadithTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+#hadithContainer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 50px;
+}
+
+#hadithText {
+  display: inline-block;
+  white-space: nowrap;
+  position: relative;
+  font-size: 18px;
+  line-height: 1.5;
+  color: white;
+  visibility: hidden; /* Initially hidden until fully loaded */
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 768px) {
+            #hadithText {
+                white-space: normal; /* Ensure text wraps */
+                display: block;
+                padding-left: 0;
+                animation: none !important; /* Completely disable animation */
+                font-size: 16px;
+                text-align: center; /* Center the text for mobile */
+                transform: none !important; /* Remove any transforms */
+                margin: 0 auto; /* Center the text block */
+            }
+        }
+
+</style>
+   
+<script>
+    function closeHadith() {
+      document.getElementById("hadith-section").style.display = "none";
+    }
+  </script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const hadithTextElement = document.getElementById('hadithText');
+
+        // Function to start scroll animation
+        function startScrollAnimation() {
+            const hadithTextWidth = hadithTextElement.scrollWidth;
+            const containerWidth = hadithTextElement.parentElement.clientWidth;
+
+            // Calculate scroll duration based on text width
+            const scrollDuration = (hadithTextWidth / containerWidth) * 30; // Adjust the multiplier for scroll speed
+
+            // Set the animation with dynamic duration
+            hadithTextElement.style.animation = `scrollText ${scrollDuration}s linear infinite`;
+        }
+
+        // Function to load the Hadith from the XLSX file
+        function fetchHadiths() {
+            fetch('hadiths/sahih_hadiths.xlsx') // Adjust the path to your actual XLSX file location
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+                    // Find the column that contains the hadith text
+                    const headers = jsonData[0];
+                    const textEnIndex = headers.findIndex(header => header && header.toLowerCase().trim() === 'text_en');
+
+                    if (textEnIndex === -1) {
+                        console.error("Column 'text_en' not found in the Excel file.");
+                        hadithTextElement.textContent = 'No hadith available.';
+                        return;
+                    }
+
+                    // Extract the full Hadith
+                    const hadiths = jsonData.slice(1).map(row => row[textEnIndex]).filter(hadith => hadith);
+                    if (hadiths.length > 0) {
+                        hadithTextElement.textContent = hadiths[0]; // Display the first Hadith
+                    } else {
+                        hadithTextElement.textContent = 'No hadith available.';
+                    }
+
+                    // Ensure text is fully loaded before making it visible and starting the scroll
+                    hadithTextElement.style.visibility = 'visible';
+
+                    // Start the scrolling animation
+                    startScrollAnimation();
+                })
+                .catch(error => {
+                    console.error('Error loading Hadith:', error);
+                    hadithTextElement.textContent = 'Error loading hadith.';
+                });
+        }
+
+        // Initially hide text until fully loaded
+        hadithTextElement.style.visibility = 'hidden';
+
+        // Fetch Hadith from the Excel file after a slight delay
+        setTimeout(fetchHadiths, 100); // Adjust timeout if necessary
+    });
+</script>
+
+
+
+    <body class="page-loaded">
+        <div class="preloader">
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        
+    
+        <!-- Rest of the HTML content -->
+    
+        <!-- Bootstrap JS -->
+        <script src="./bootstrap.min.js"></script>
+        <script src="./jquery.nice-select.min.js"></script>
+        <script src="./owl.carousel.min.js"></script>
+        <script src="./circle-progres.js"></script>
+        <script src="./jquery.fancybox.min.js"></script>
+        <script src="./audioplayer.js"></script>
+        <script>
+            $(function () {
+                $("audio").audioPlayer();
+            });
+        </script>
+
 <body class="page-loaded" data-new-gr-c-s-check-loaded="14.1160.0" data-gr-ext-installed="">
     <!-- preloader -->
     <div class="preloader">
@@ -1618,7 +1801,7 @@ fetchPrayerTimes();
 
         
       </script>
-      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="https://kit.fontawesome.com/97ac8d9bb6.js" crossorigin="anonymous"></script>
       
 </body>
