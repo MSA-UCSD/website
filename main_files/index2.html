@@ -32,29 +32,22 @@
 <div id="hadith-section">
     <span id="close-hadith" onclick="closeHadith()">×</span> <!-- Close Button -->
     <h1 id="hadithTitle">Hadith of the Week</h1>
-    <p id="hadithText">Narrated 'Umar bin Al-Khattab: I heard Allah's Apostle saying, "The reward of deeds depends upon the intentions and every person will get the reward according to what he has intended."</p>
+    <p id="hadithText"></p>
   </div>
   
  
 
  <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+#hadith-section {
+  background-color: #2e6b58;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  font-size: 1.2em;
+  overflow: hidden;
+} 
 
-    #hadithBanner {
-        background-color: #edf6f3; /* A light color to match the theme */
-        color: #004d40; /* Use a darker green to match the page's color scheme */
-        padding: 20px;
-        text-align: center;
-        position: relative;
-        font-size: 1.2em;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Close Button Styling */
 #close-hadith {
   position: absolute;
   top: 10px;
@@ -68,80 +61,67 @@
 }
 
 #close-hadith:hover {
-  color: #ffcccc; /* Slight color change on hover */
+  color: #ffcccc;
 }
 
-
-
-    #hadith-section {
-  background-color: #2e6b58; /* Same as navigation bar background */
-  padding: 20px;
-  text-align: center;
-  color: white; /* Text color for readability */
-}
-
-/* Adjusting the size of the title */
 #hadithTitle {
-  font-size: 24px; /* Reduce the size to a balanced value */
+  font-size: 24px;
   margin-bottom: 10px;
-  color: white; /* Match the navigation bar text */
+  color: white;
   font-weight: bold;
 }
-#hadithText {
-  font-size: 18px; /* Smaller size for the text */
-  color: white; /* White text to match the color scheme */
-  max-width: 80%; /* Ensure it doesn’t stretch across the entire page */
-  margin: 0 auto;
+
+#hadithContainer {
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  position: relative;
+  width: 100%;
+  height: 50px;
 }
 
 #hadithText {
-  animation: scroll 15s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+  position: relative;
+  font-size: 18px;
+  line-height: 1.5;
+  color: white;
+  visibility: hidden; /* Initially hidden until fully loaded */
 }
 
-    @keyframes scroll {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
 
-    h1 {
-        font-size: 2em;
-        margin: 0;
-        color: #2e7d32; /* A green color for the title */
-    }
-
-    .content {
-        padding: 50px;
-        text-align: center;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 1.5em;
-        }
-
-        #hadithBanner {
-            padding: 10px;
-        }
-
-        #hadithText {
-            font-size: 1em;
-        }
-    }
-    
 </style>
    
-   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const hadithTextElement = document.getElementById('hadithText');
+
+        // Function to start scroll animation
+        function startScrollAnimation() {
+            const hadithTextWidth = hadithTextElement.scrollWidth;
+            const containerWidth = hadithTextElement.parentElement.clientWidth;
+
+            // Calculate scroll duration based on text width
+            const scrollDuration = (hadithTextWidth / containerWidth) * 30; // Adjust the multiplier for scroll speed
+
+            // Set the animation with dynamic duration
+            hadithTextElement.style.animation = `scrollText ${scrollDuration}s linear infinite`;
+        }
+
+        // Function to load the Hadith from the XLSX file
         function fetchHadiths() {
-            fetch('hadiths/sahih_hadiths.xlsx') // Replace with your actual Excel file path
+            fetch('hadiths/sahih_hadiths.xlsx') // Adjust the path to your actual XLSX file location
                 .then(response => response.arrayBuffer())
                 .then(data => {
                     const workbook = XLSX.read(data, { type: 'array' });
@@ -149,58 +129,46 @@
                     const worksheet = workbook.Sheets[sheetName];
                     const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-                    // Log the headers for debugging
-                    console.log("Headers in the Excel file:", jsonData[0]);
+                    // Find the column that contains the hadith text
+                    const headers = jsonData[0];
+                    const textEnIndex = headers.findIndex(header => header && header.toLowerCase().trim() === 'text_en');
 
-                    parseExcelData(jsonData);
+                    if (textEnIndex === -1) {
+                        console.error("Column 'text_en' not found in the Excel file.");
+                        hadithTextElement.textContent = 'No hadith available.';
+                        return;
+                    }
+
+                    // Extract the full Hadith
+                    const hadiths = jsonData.slice(1).map(row => row[textEnIndex]).filter(hadith => hadith);
+                    if (hadiths.length > 0) {
+                        hadithTextElement.textContent = hadiths[0]; // Display the first Hadith
+                    } else {
+                        hadithTextElement.textContent = 'No hadith available.';
+                    }
+
+                    // Ensure text is fully loaded before making it visible and starting the scroll
+                    hadithTextElement.style.visibility = 'visible';
+
+                    // Start the scrolling animation
+                    startScrollAnimation();
                 })
                 .catch(error => {
-                    console.error('Error fetching the Excel file:', error);
-                    document.getElementById("hadithText").textContent = 'Error loading hadith.';
+                    console.error('Error loading Hadith:', error);
+                    hadithTextElement.textContent = 'Error loading hadith.';
                 });
         }
 
-        function parseExcelData(data) {
-            const headers = data[0]; // First row is the header
-            console.log("Detected headers:", headers); // Log headers for debugging
-            
-            // Find the column index for 'text_en'
-            const textEnIndex = headers.findIndex(header => header && header.toLowerCase().trim() === 'text_en');
+        // Initially hide text until fully loaded
+        hadithTextElement.style.visibility = 'hidden';
 
-            if (textEnIndex === -1) {
-                console.error("Column 'text_en' not found in the Excel file.");
-                document.getElementById("hadithText").textContent = 'No hadith available.';
-                return;
-            }
-
-            const result = [];
-            for (let i = 1; i < data.length; i++) {
-                const row = data[i];
-
-                if (row.length > textEnIndex && row[textEnIndex]) {
-                    let hadithText = row[textEnIndex].trim();
-                    if (hadithText) {
-                        result.push(hadithText);
-                    }
-                }
-            }
-
-            if (result.length > 0) {
-                document.getElementById("hadithText").textContent = result[0]; // Show the first hadith
-            } else {
-                document.getElementById("hadithText").textContent = 'No hadith available.';
-            }
-        }
-
-        // Call the function to load the hadiths from the Excel file
-        fetchHadiths();
+        // Fetch Hadith from the Excel file after a slight delay
+        setTimeout(fetchHadiths, 100); // Adjust timeout if necessary
     });
-
-    function closeHadith() {
-  document.getElementById("hadith-section").style.display = "none";
-}
-
 </script>
+
+
+
     <body class="page-loaded">
         <div class="preloader">
             <div class="loader">
