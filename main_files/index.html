@@ -29,15 +29,14 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
+
 <div id="hadith-section">
     <span id="close-hadith" onclick="closeHadith()">×</span> <!-- Close Button -->
     <h1 id="hadithTitle">Hadith of the Week</h1>
     <p id="hadithText"></p>
-  </div>
-  
- 
+</div>
 
- <style>
+<style>
 #hadith-section {
   background-color: #2e6b58;
   padding: 20px;
@@ -98,28 +97,26 @@
 }
 
 @media (max-width: 768px) {
-            #hadithText {
-                white-space: normal; /* Ensure text wraps */
-                display: block;
-                padding-left: 0;
-                animation: none !important; /* Completely disable animation */
-                font-size: 16px;
-                text-align: center; /* Center the text for mobile */
-                transform: none !important; /* Remove any transforms */
-                margin: 0 auto; /* Center the text block */
-            }
-        }
-
+    #hadithText {
+        white-space: normal; /* Ensure text wraps */
+        display: block;
+        padding-left: 0;
+        animation: none !important; /* Completely disable animation */
+        font-size: 16px;
+        text-align: center; /* Center the text for mobile */
+        transform: none !important; /* Remove any transforms */
+        margin: 0 auto; /* Center the text block */
+    }
+}
 </style>
-   
+
 <script>
     function closeHadith() {
       document.getElementById("hadith-section").style.display = "none";
     }
-  </script>
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const hadithTextElement = document.getElementById('hadithText');
@@ -158,8 +155,12 @@
 
                     // Extract the full Hadith
                     const hadiths = jsonData.slice(1).map(row => row[textEnIndex]).filter(hadith => hadith);
+
+                    // Check the current week number to select the Hadith
+                    let currentWeekIndex = getCurrentHadithIndex(hadiths.length, hadiths);
+
                     if (hadiths.length > 0) {
-                        hadithTextElement.textContent = hadiths[0]; // Display the first Hadith
+                        hadithTextElement.textContent = hadiths[currentWeekIndex]; // Display the correct Hadith
                     } else {
                         hadithTextElement.textContent = 'No hadith available.';
                     }
@@ -176,6 +177,43 @@
                 });
         }
 
+        // Function to get the current index for the Hadith of the week
+        function getCurrentHadithIndex(hadithCount, hadiths) {
+            const MAX_CHAR_LIMIT = 250; // Set your character limit for display
+
+            const currentDate = new Date();
+            let storedDate = localStorage.getItem('lastHadithDate');
+            let storedIndex = localStorage.getItem('lastHadithIndex');
+
+            // Calculate the time difference from the last stored date (in milliseconds)
+            const timeDiff = storedDate ? currentDate - new Date(storedDate) : null;
+
+            // If no stored date, or it's been a week or more, update the index
+            if (!storedDate || timeDiff >= 7 * 24 * 60 * 60 * 1000) {
+                let newIndex = storedIndex ? (parseInt(storedIndex) + 1) % hadithCount : 0;
+
+                // Check if the hadith at newIndex is too long and find a suitable one
+                while (hadiths[newIndex].length > MAX_CHAR_LIMIT) {
+                    newIndex = (newIndex + 1) % hadithCount; // Increment and wrap around if needed
+                }
+
+                // Update localStorage with the new index and date
+                localStorage.setItem('lastHadithDate', currentDate);
+                localStorage.setItem('lastHadithIndex', newIndex);
+                return newIndex;
+            }
+
+            // If it's the same week, use the stored index and verify length
+            let currentIndex = parseInt(storedIndex) || 0;
+
+            // Ensure the hadith is within the length limit
+            while (hadiths[currentIndex].length > MAX_CHAR_LIMIT) {
+                currentIndex = (currentIndex + 1) % hadithCount; // Increment and wrap around if needed
+            }
+
+            return currentIndex;
+        }
+
         // Initially hide text until fully loaded
         hadithTextElement.style.visibility = 'hidden';
 
@@ -185,32 +223,6 @@
 </script>
 
 
-
-    <body class="page-loaded">
-        <div class="preloader">
-            <div class="loader">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </div>
-        
-    
-        <!-- Rest of the HTML content -->
-    
-        <!-- Bootstrap JS -->
-        <script src="./bootstrap.min.js"></script>
-        <script src="./jquery.nice-select.min.js"></script>
-        <script src="./owl.carousel.min.js"></script>
-        <script src="./circle-progres.js"></script>
-        <script src="./jquery.fancybox.min.js"></script>
-        <script src="./audioplayer.js"></script>
-        <script>
-            $(function () {
-                $("audio").audioPlayer();
-            });
-        </script>
 
 <body class="page-loaded" data-new-gr-c-s-check-loaded="14.1160.0" data-gr-ext-installed="">
     <!-- preloader -->
