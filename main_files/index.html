@@ -118,8 +118,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <script>
-   document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const hadithTextElement = document.getElementById('hadithText');
+
+    // Custom hadith override (you can manually set this to any text you want for a week)
+    const customHadith = "Messenger of Allah (ﷺ) said, 'Help your brother, whether he is an oppressor or is oppressed'. A man enquired: 'O Messenger of Allah! I help him when he is oppressed, but how can I help him when he is an oppressor?'' He (ﷺ) said, 'You can keep him from committing oppression. That will be your help to him'.";  // Set this variable to your custom hadith text if you want to override, otherwise leave it empty.
+
+    // Date of when the custom hadith was set (must be the same format as new Date())
+    const customHadithSetDate = "2024-10-07";  // Set this manually to the date you override the hadith (e.g., "2024-10-01").
 
     // Function to start scroll animation
     function startScrollAnimation() {
@@ -133,32 +139,38 @@
         hadithTextElement.style.animation = `scrollText ${scrollDuration}s linear infinite`;
     }
 
-    // Function to load the Hadith from the Google Sheet CSV
+    // Function to load the Hadith from the Google Sheet CSV or use a custom hadith
     function fetchHadiths() {
-        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTc4f9idbI3jxJ8LjLikWm1O34egOtNR1uj97x_rEJg65qq6w9Jbbd3W1AU7KSW-YyI-_6nn_36izmX/pub?output=csv')
-            .then(response => response.text()) // Fetch as text
-            .then(data => {
-                const hadiths = parseCSV(data); // Parse CSV properly
+        // Check if a custom hadith is set and if it should still be displayed
+        if (customHadith && isCustomHadithActive()) {
+            hadithTextElement.textContent = customHadith; // Display the custom hadith
+            hadithTextElement.style.visibility = 'visible';
+            startScrollAnimation();
+        } else {
+            // Otherwise, fetch from the Google Sheet
+            fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTc4f9idbI3jxJ8LjLikWm1O34egOtNR1uj97x_rEJg65qq6w9Jbbd3W1AU7KSW-YyI-_6nn_36izmX/pub?output=csv')
+                .then(response => response.text()) // Fetch as text
+                .then(data => {
+                    const hadiths = parseCSV(data); // Parse CSV properly
 
-                // Check the current week of the year to select the Hadith
-                let currentWeekIndex = getCurrentWeekIndex(hadiths.length);
+                    // Check the current week of the year to select the Hadith
+                    let currentWeekIndex = getCurrentWeekIndex(hadiths.length);
 
-                if (hadiths.length > 0) {
-                    hadithTextElement.textContent = hadiths[currentWeekIndex]; // Display the correct Hadith
-                } else {
-                    hadithTextElement.textContent = 'No hadith available.';
-                }
+                    if (hadiths.length > 0) {
+                        hadithTextElement.textContent = hadiths[currentWeekIndex]; // Display the correct Hadith
+                    } else {
+                        hadithTextElement.textContent = 'No hadith available.';
+                    }
 
-                // Ensure text is fully loaded before making it visible and starting the scroll
-                hadithTextElement.style.visibility = 'visible';
-
-                // Start the scrolling animation
-                startScrollAnimation();
-            })
-            .catch(error => {
-                console.error('Error loading Hadith:', error);
-                hadithTextElement.textContent = 'Error loading hadith.';
-            });
+                    // Ensure text is fully loaded before making it visible and starting the scroll
+                    hadithTextElement.style.visibility = 'visible';
+                    startScrollAnimation();
+                })
+                .catch(error => {
+                    console.error('Error loading Hadith:', error);
+                    hadithTextElement.textContent = 'Error loading hadith.';
+                });
+        }
     }
 
     // Function to parse CSV data correctly
@@ -184,14 +196,27 @@
         return weekNumber % hadithCount;
     }
 
+    // Function to check if the custom hadith is still active (within a week)
+    function isCustomHadithActive() {
+        if (!customHadithSetDate) {
+            return false;
+        }
+        
+        const customDate = new Date(customHadithSetDate);
+        const currentDate = new Date();
+        const timeDiff = currentDate - customDate;
+        const daysDiff = timeDiff / (1000 * 60 * 60 * 24); // Convert time difference to days
+        
+        // Return true if it's within a 7-day window
+        return daysDiff <= 7;
+    }
+
     // Initially hide text until fully loaded
     hadithTextElement.style.visibility = 'hidden';
 
-    // Fetch Hadith from the Google Sheet CSV after a slight delay
+    // Fetch Hadith (either custom or from Google Sheet) after a slight delay
     setTimeout(fetchHadiths, 100); // Adjust timeout if necessary
 });
-
-
 </script>
 
 
