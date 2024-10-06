@@ -139,9 +139,9 @@
             .then(response => response.text()) // Fetch as text
             .then(data => {
                 const hadiths = parseCSV(data); // Parse CSV properly
-                
-                // Check the current week number to select the Hadith
-                let currentWeekIndex = getCurrentHadithIndex(hadiths.length, hadiths);
+
+                // Check the current week of the year to select the Hadith
+                let currentWeekIndex = getCurrentWeekIndex(hadiths.length);
 
                 if (hadiths.length > 0) {
                     hadithTextElement.textContent = hadiths[currentWeekIndex]; // Display the correct Hadith
@@ -174,41 +174,14 @@
         return hadiths;
     }
 
-    // Function to get the current index for the Hadith of the week
-    function getCurrentHadithIndex(hadithCount, hadiths) {
-        const MAX_CHAR_LIMIT = 250; // Set your character limit for display
-
+    // Function to calculate the current week of the year
+    function getCurrentWeekIndex(hadithCount) {
         const currentDate = new Date();
-        const storedDate = localStorage.getItem('lastHadithDate');
-        const storedIndex = localStorage.getItem('lastHadithIndex');
+        const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+        const weekNumber = Math.floor(((currentDate - startOfYear) / (24 * 60 * 60 * 1000) + startOfYear.getDay() + 1) / 7);
 
-        // Calculate the time difference from the last stored date (in milliseconds)
-        const timeDiff = storedDate ? currentDate - new Date(storedDate) : null;
-
-        // If no stored date, or it's been a week or more, update the index
-        if (!storedDate || timeDiff >= 7 * 24 * 60 * 60 * 1000) {
-            let newIndex = storedIndex ? (parseInt(storedIndex) + 1) % hadithCount : 0;
-
-            // Check if the hadith at newIndex is too long and find a suitable one
-            while (hadiths[newIndex].length > MAX_CHAR_LIMIT) {
-                newIndex = (newIndex + 1) % hadithCount; // Increment and wrap around if needed
-            }
-
-            // Update localStorage with the new index and date
-            localStorage.setItem('lastHadithDate', currentDate);
-            localStorage.setItem('lastHadithIndex', newIndex);
-            return newIndex;
-        }
-
-        // If it's the same week, use the stored index and verify length
-        let currentIndex = parseInt(storedIndex) || 0;
-
-        // Ensure the hadith is within the length limit
-        while (hadiths[currentIndex].length > MAX_CHAR_LIMIT) {
-            currentIndex = (currentIndex + 1) % hadithCount; // Increment and wrap around if needed
-        }
-
-        return currentIndex;
+        // Ensure the index wraps around if there are fewer hadiths than weeks
+        return weekNumber % hadithCount;
     }
 
     // Initially hide text until fully loaded
