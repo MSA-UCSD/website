@@ -115,112 +115,112 @@
       document.getElementById("hadith-section").style.display = "none";
     }
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const hadithTextElement = document.getElementById('hadithText');
+   document.addEventListener("DOMContentLoaded", function () {
+    const hadithTextElement = document.getElementById('hadithText');
 
-        // Function to start scroll animation
-        function startScrollAnimation() {
-            const hadithTextWidth = hadithTextElement.scrollWidth;
-            const containerWidth = hadithTextElement.parentElement.clientWidth;
+    // Function to start scroll animation
+    function startScrollAnimation() {
+        const hadithTextWidth = hadithTextElement.scrollWidth;
+        const containerWidth = hadithTextElement.parentElement.clientWidth;
 
-            // Calculate scroll duration based on text width
-            const scrollDuration = (hadithTextWidth / containerWidth) * 30; // Adjust the multiplier for scroll speed
+        // Calculate scroll duration based on text width
+        const scrollDuration = (hadithTextWidth / containerWidth) * 30; // Adjust the multiplier for scroll speed
 
-            // Set the animation with dynamic duration
-            hadithTextElement.style.animation = `scrollText ${scrollDuration}s linear infinite`;
-        }
+        // Set the animation with dynamic duration
+        hadithTextElement.style.animation = `scrollText ${scrollDuration}s linear infinite`;
+    }
 
-        // Function to load the Hadith from the XLSX file
-        function fetchHadiths() {
-            fetch('hadiths/sahih_hadiths.xlsx') // Adjust the path to your actual XLSX file location
-                .then(response => response.arrayBuffer())
-                .then(data => {
-                    const workbook = XLSX.read(data, { type: 'array' });
-                    const sheetName = workbook.SheetNames[0];
-                    const worksheet = workbook.Sheets[sheetName];
-                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    // Function to load the Hadith from the Google Sheet CSV
+    function fetchHadiths() {
+        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTc4f9idbI3jxJ8LjLikWm1O34egOtNR1uj97x_rEJg65qq6w9Jbbd3W1AU7KSW-YyI-_6nn_36izmX/pub?output=csv')
+            .then(response => response.text()) // Fetch as text
+            .then(data => {
+                const hadiths = parseCSV(data); // Parse CSV properly
+                
+                // Check the current week number to select the Hadith
+                let currentWeekIndex = getCurrentHadithIndex(hadiths.length, hadiths);
 
-                    // Find the column that contains the hadith text
-                    const headers = jsonData[0];
-                    const textEnIndex = headers.findIndex(header => header && header.toLowerCase().trim() === 'text_en');
-
-                    if (textEnIndex === -1) {
-                        console.error("Column 'text_en' not found in the Excel file.");
-                        hadithTextElement.textContent = 'No hadith available.';
-                        return;
-                    }
-
-                    // Extract the full Hadith
-                    const hadiths = jsonData.slice(1).map(row => row[textEnIndex]).filter(hadith => hadith);
-
-                    // Check the current week number to select the Hadith
-                    let currentWeekIndex = getCurrentHadithIndex(hadiths.length, hadiths);
-
-                    if (hadiths.length > 0) {
-                        hadithTextElement.textContent = hadiths[currentWeekIndex]; // Display the correct Hadith
-                    } else {
-                        hadithTextElement.textContent = 'No hadith available.';
-                    }
-
-                    // Ensure text is fully loaded before making it visible and starting the scroll
-                    hadithTextElement.style.visibility = 'visible';
-
-                    // Start the scrolling animation
-                    startScrollAnimation();
-                })
-                .catch(error => {
-                    console.error('Error loading Hadith:', error);
-                    hadithTextElement.textContent = 'Error loading hadith.';
-                });
-        }
-
-        // Function to get the current index for the Hadith of the week
-        function getCurrentHadithIndex(hadithCount, hadiths) {
-            const MAX_CHAR_LIMIT = 250; // Set your character limit for display
-
-            const currentDate = new Date();
-            let storedDate = localStorage.getItem('lastHadithDate');
-            let storedIndex = localStorage.getItem('lastHadithIndex');
-
-            // Calculate the time difference from the last stored date (in milliseconds)
-            const timeDiff = storedDate ? currentDate - new Date(storedDate) : null;
-
-            // If no stored date, or it's been a week or more, update the index
-            if (!storedDate || timeDiff >= 7 * 24 * 60 * 60 * 1000) {
-                let newIndex = storedIndex ? (parseInt(storedIndex) + 1) % hadithCount : 0;
-
-                // Check if the hadith at newIndex is too long and find a suitable one
-                while (hadiths[newIndex].length > MAX_CHAR_LIMIT) {
-                    newIndex = (newIndex + 1) % hadithCount; // Increment and wrap around if needed
+                if (hadiths.length > 0) {
+                    hadithTextElement.textContent = hadiths[currentWeekIndex]; // Display the correct Hadith
+                } else {
+                    hadithTextElement.textContent = 'No hadith available.';
                 }
 
-                // Update localStorage with the new index and date
-                localStorage.setItem('lastHadithDate', currentDate);
-                localStorage.setItem('lastHadithIndex', newIndex);
-                return newIndex;
+                // Ensure text is fully loaded before making it visible and starting the scroll
+                hadithTextElement.style.visibility = 'visible';
+
+                // Start the scrolling animation
+                startScrollAnimation();
+            })
+            .catch(error => {
+                console.error('Error loading Hadith:', error);
+                hadithTextElement.textContent = 'Error loading hadith.';
+            });
+    }
+
+    // Function to parse CSV data correctly
+    function parseCSV(csvText) {
+        const lines = csvText.split('\n'); // Split by new line
+        const hadiths = [];
+
+        for (let i = 0; i < lines.length; i++) {
+            if (lines[i].trim()) {
+                hadiths.push(lines[i].trim()); // Add the full line (including commas inside hadiths)
+            }
+        }
+        return hadiths;
+    }
+
+    // Function to get the current index for the Hadith of the week
+    function getCurrentHadithIndex(hadithCount, hadiths) {
+        const MAX_CHAR_LIMIT = 250; // Set your character limit for display
+
+        const currentDate = new Date();
+        const storedDate = localStorage.getItem('lastHadithDate');
+        const storedIndex = localStorage.getItem('lastHadithIndex');
+
+        // Calculate the time difference from the last stored date (in milliseconds)
+        const timeDiff = storedDate ? currentDate - new Date(storedDate) : null;
+
+        // If no stored date, or it's been a week or more, update the index
+        if (!storedDate || timeDiff >= 7 * 24 * 60 * 60 * 1000) {
+            let newIndex = storedIndex ? (parseInt(storedIndex) + 1) % hadithCount : 0;
+
+            // Check if the hadith at newIndex is too long and find a suitable one
+            while (hadiths[newIndex].length > MAX_CHAR_LIMIT) {
+                newIndex = (newIndex + 1) % hadithCount; // Increment and wrap around if needed
             }
 
-            // If it's the same week, use the stored index and verify length
-            let currentIndex = parseInt(storedIndex) || 0;
-
-            // Ensure the hadith is within the length limit
-            while (hadiths[currentIndex].length > MAX_CHAR_LIMIT) {
-                currentIndex = (currentIndex + 1) % hadithCount; // Increment and wrap around if needed
-            }
-
-            return currentIndex;
+            // Update localStorage with the new index and date
+            localStorage.setItem('lastHadithDate', currentDate);
+            localStorage.setItem('lastHadithIndex', newIndex);
+            return newIndex;
         }
 
-        // Initially hide text until fully loaded
-        hadithTextElement.style.visibility = 'hidden';
+        // If it's the same week, use the stored index and verify length
+        let currentIndex = parseInt(storedIndex) || 0;
 
-        // Fetch Hadith from the Excel file after a slight delay
-        setTimeout(fetchHadiths, 100); // Adjust timeout if necessary
-    });
+        // Ensure the hadith is within the length limit
+        while (hadiths[currentIndex].length > MAX_CHAR_LIMIT) {
+            currentIndex = (currentIndex + 1) % hadithCount; // Increment and wrap around if needed
+        }
+
+        return currentIndex;
+    }
+
+    // Initially hide text until fully loaded
+    hadithTextElement.style.visibility = 'hidden';
+
+    // Fetch Hadith from the Google Sheet CSV after a slight delay
+    setTimeout(fetchHadiths, 100); // Adjust timeout if necessary
+});
+
+
 </script>
+
 
 
 
