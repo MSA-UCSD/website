@@ -1544,52 +1544,55 @@
 
                 </style>
 
+<div class="col-lg-6" id="latest-upload">
+    <div class="navigating-life">
+        <div class="d-flex align-items-center">
+            <div class="location">
+                <i class="fa fa-camera"></i><span style="font-family: var(--common-font);">Our Latest Upload!</span>
+            </div>
+        </div>
+        <h2>Latest Video</h2>
+        <div id="latest-video-container">
+            <!-- This will be populated with the latest video from YouTube -->
+        </div>
+    </div>
+</div>
+
+<script>
+    const apiKey = 'AIzaSyAn_HEDC0tErL4e_2Toz6MiWme9kx6ffBA'; // Replace with your YouTube API Key
+    const channelId = 'UCZ3ZGPZb68ibXmzKgDCMMiw'; // MSA UCSD YouTube channel ID
+
+    async function fetchLatestVideo() {
+    try {
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=1`);
+        const data = await response.json();
+
+        // Log the full API response to troubleshoot
+        console.log('API Response:', data);
+
+        // Check if items array exists and contains at least one item
+        if (data.items && data.items.length > 0) {
+            const videoId = data.items[0].id.videoId;
+
+            // Set the latest video in the iframe
+            const videoContainer = document.getElementById('latest-video-container');
+            videoContainer.innerHTML = `<iframe width="850" height="472.5" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        } else {
+            console.error('No videos found for this channel.');
+            document.getElementById('latest-video-container').innerText = 'No videos found on the channel.';
+        }
+    } catch (error) {
+        console.error('Error fetching the latest video:', error);
+        document.getElementById('latest-video-container').innerText = 'Error loading the latest video.';
+    }
+}
+
+fetchLatestVideo();
 
 
-                <div class="col-lg-6"  id = "ramadan">
-                    <div class="navigating-life">
-                        <div class="d-flex align-items-center" id = "ramadan">
-                            <div class="location">
-                                <i class="fa fa-camera"></i><span style = "    font-family: var(--common-font);">Our Latest Upload!</span>
-                            </div>
-                            <!-- <div class="location">
-                                <i>
-                                    <svg width="24px" height="24px" viewBox="-4 0 32 32" version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <g transform="translate(-104.000000, -411.000000)" fill="#007d3a">
-                                                <path
-                                                    d="M116,426 C114.343,426 113,424.657 113,423 C113,421.343 114.343,420 116,420 C117.657,420 119,421.343 119,423 C119,424.657 117.657,426 116,426 L116,426 Z M116,418 C113.239,418 111,420.238 111,423 C111,425.762 113.239,428 116,428 C118.761,428 121,425.762 121,423 C121,420.238 118.761,418 116,418 L116,418 Z M116,440 C114.337,440.009 106,427.181 106,423 C106,417.478 110.477,413 116,413 C121.523,413 126,417.478 126,423 C126,427.125 117.637,440.009 116,440 L116,440 Z M116,411 C109.373,411 104,416.373 104,423 C104,428.018 114.005,443.011 116,443 C117.964,443.011 128,427.95 128,423 C128,416.373 122.627,411 116,411 L116,411 Z">
-                                                </path>
-                                            </g>
-                                        </g>
-                                    </svg> </i><span>Town 21, United State</span>
-                            </div> -->
-                        </div>
-                        <h2>Khutbah Workshop </h2>
-                        <iframe width="850" height="472.5"src="https://www.youtube.com/embed/Awj-ay6lxr8?si=9jlglFO80dOhNeDw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <!-- <div id="countdown">
-                            <ul>
-                                <li><span id="days">132</span>days</li>
-                                <li><span id="hours">9</span>Hour</li>
-                                <li><span id="minutes">28</span>Min</li>
-                                <li class="mb-0"><span id="seconds">51</span>Sec</li>
-                            </ul>
-                        </div> -->
+</script>
 
-                        
-                        <!-- <div class="d-flex align-items-center">
-                            <a href="https://winsfolio.net/html/ibadah/index.html#" class="btn">Join Now</a>
-                            <div class="video">
-                                <a data-fancybox="" href="https://www.youtube.com/watch?v=1La4QzGeaaQ"><i>
-                                        <svg width="15" height="22" viewBox="0 0 11 17" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11 8.5L0.5 0.272758L0.5 16.7272L11 8.5Z" fill="#fff"></path>
-                                        </svg> </i>Watch Video</a>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
