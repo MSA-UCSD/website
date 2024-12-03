@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MSA UCSD | About</title>
+    <link rel="icon" href="./jav.png" />
+    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="./owl.carousel.min.css" />
+    <link rel="stylesheet" href="./owl.theme.default.min.css" />
+    <!-- fancybox -->
+    <link rel="stylesheet" href="./jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="./nice-select.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6vP0kho8N9+IRvK0p+8n/cP7hSls9pYq0m0yp9ypFnUWle/6w1QD9J1R+vjnB3p" crossorigin="anonymous">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="./fontawesome.min.css" />
+    <link rel="stylesheet" href="./audioplayer.css" />
+    <!-- style -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- responsive -->
+    <link rel="stylesheet" href="./responsive.css" />
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script src="./preloader.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<body class="page-loaded" data-new-gr-c-s-check-loaded="14.1160.0" data-gr-ext-installed="">
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- header -->
+    <header>
+        <div class="container">
+            <div class="top-bar">
+                <div class="row align-items-center">
+                    <div class="col-xl-5">
+                        <div class="d-flex align-items-center">
+                            <div class="content-header me-5">
+                                <i>
+                                    <svg width="800px" height="800px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="5" stroke="#fbc50b" stroke-width="1.5"></circle>
+                                        <path d="M12 2V4" stroke="#fbc50b" stroke-width="1.5" stroke-linecap="round">
+                                        </path>
+                                        <path d="M12 20V22" stroke="#fbc50b" stroke-width="1.5" stroke-linecap="round">
+                                        </path>
+                                        <path d="M4 12L2 12" stroke="#fbc50b" stroke-width="1.5" stroke-linecap="round">
+                                        </path>
+                                        <path d="M22 12L20 12" stroke="#fbc50b" stroke-width="1.5"
+                                            stroke-linecap="round"></path>
+                                        <path d="M19.7778 4.22266L17.5558 6.25424" stroke="#fbc50b" stroke-width="1.5"
+                                            stroke-linecap="round"></path>
+                                        <path d="M4.22217 4.22266L6.44418 6.25424" stroke="#fbc50b" stroke-width="1.5"
+                                            stroke-linecap="round"></path>
+                                        <path d="M6.44434 17.5557L4.22211 19.7779" stroke="#fbc50b" stroke-width="1.5"
+                                            stroke-linecap="round"></path>
+                                        <path d="M19.7778 19.7773L17.5558 17.5551" stroke="#fbc50b" stroke-width="1.5"
+                                            stroke-linecap="round"></path>
+                                    </svg>
+                                </i>
+                                <h4>Fajr At<b>: <span id="fajr-time"></span></b></h4>
+                            </div>
+
+
+                            <div class="content-header me-5">
+                                <i>
+                                    <svg width="800px" height="800px" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M20.3655 2.12433C20.0384 1.29189 18.8624 1.29189 18.5353 2.12433L18.1073 3.21354L17.0227 3.6429C16.1933 3.97121 16.1933 5.14713 17.0227 5.47544L18.1073 5.90481L18.5353 6.99401C18.8624 7.82645 20.0384 7.82646 20.3655 6.99402L20.7935 5.90481L21.8781 5.47544C22.7075 5.14714 22.7075 3.97121 21.8781 3.6429L20.7935 3.21354L20.3655 2.12433ZM19.4504 2.52989L19.8651 3.58533C19.9648 3.83891 20.165 4.04027 20.4188 4.14073L21.4759 4.55917L20.4188 4.97762C20.165 5.07808 19.9648 5.27943 19.8651 5.53301L19.4504 6.58846L19.0357 5.53301C18.936 5.27943 18.7358 5.07808 18.482 4.97762L17.4249 4.55917L18.482 4.14073C18.7358 4.04027 18.936 3.83891 19.0357 3.58533L19.4504 2.52989ZM16.4981 7.94681C16.171 7.11437 14.9951 7.11437 14.668 7.94681L14.5134 8.34008L14.1222 8.49497C13.2928 8.82328 13.2928 9.9992 14.1222 10.3275L14.5134 10.4824L14.668 10.8757C14.9951 11.7081 16.171 11.7081 16.4981 10.8757L16.6526 10.4824L17.0439 10.3275C17.8733 9.9992 17.8733 8.82328 17.0439 8.49497L16.6526 8.34008L16.4981 7.94681ZM15.583 8.35237L15.7243 8.71188C15.824 8.96545 16.0242 9.16681 16.278 9.26727L16.6417 9.41124L16.278 9.55521C16.0242 9.65567 15.824 9.85703 15.7243 10.1106L15.583 10.4701L15.4418 10.1106C15.3421 9.85703 15.1419 9.65567 14.8881 9.55521L14.5244 9.41124L14.8881 9.26727C15.1419 9.16681 15.3421 8.96545 15.4418 8.71188L15.583 8.35237Z"
+                                            fill="#fbc50b"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M11.0174 2.80157C6.37072 3.29221 2.75 7.22328 2.75 12C2.75 17.1086 6.89137 21.25 12 21.25C16.7767 21.25 20.7078 17.6293 21.1984 12.9826C19.8717 14.6669 17.8126 15.75 15.5 15.75C11.4959 15.75 8.25 12.5041 8.25 8.5C8.25 6.18738 9.33315 4.1283 11.0174 2.80157ZM1.25 12C1.25 6.06294 6.06294 1.25 12 1.25C12.7166 1.25 13.0754 1.82126 13.1368 2.27627C13.196 2.71398 13.0342 3.27065 12.531 3.57467C10.8627 4.5828 9.75 6.41182 9.75 8.5C9.75 11.6756 12.3244 14.25 15.5 14.25C17.5882 14.25 19.4172 13.1373 20.4253 11.469C20.7293 10.9658 21.286 10.804 21.7237 10.8632C22.1787 10.9246 22.75 11.2834 22.75 12C22.75 17.9371 17.9371 22.75 12 22.75C6.06294 22.75 1.25 17.9371 1.25 12Z"
+                                            fill="#fbc50b"></path>
+                                    </svg>
+                                </i>
+
+                                <h4>
+                                    Sunset At<b>: <span id="maghrib-time"></span></b>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div class="">
+                            <ul class="social-media">
+                                <li>
+                                    <a href="https://www.instagram.com/msaucsd/" target="_blank"><i
+                                            class="fab fa-instagram icon"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/groups/msaucsd" target="_blank"><i
+                                            class="fab fa-facebook-f icon"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/@msa-ucsd" target="_blank"><i
+                                            class="fa-brands fa-youtube"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="d-flex align-items-center login">
+                            <div class="location">
+                                <i>
+                                    <svg width="24px" height="24px" viewBox="-4 0 32 32" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(-104.000000, -411.000000)" fill="#fbc50b">
+                                                <path
+                                                    d="M116,426 C114.343,426 113,424.657 113,423 C113,421.343 114.343,420 116,420 C117.657,420 119,421.343 119,423 C119,424.657 117.657,426 116,426 L116,426 Z M116,418 C113.239,418 111,420.238 111,423 C111,425.762 113.239,428 116,428 C118.761,428 121,425.762 121,423 C121,420.238 118.761,418 116,418 L116,418 Z M116,440 C114.337,440.009 106,427.181 106,423 C106,417.478 110.477,413 116,413 C121.523,413 126,417.478 126,423 C126,427.125 117.637,440.009 116,440 L116,440 Z M116,411 C109.373,411 104,416.373 104,423 C104,428.018 114.005,443.011 116,443 C117.964,443.011 128,427.95 128,423 C128,416.373 122.627,411 116,411 L116,411 Z">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </svg> </i><span>Contemplation Lounge, UC San Diego</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <div class="two-bar">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="logo">
+                            <a href="index.html">
+                                <!-- <img alt="logo" src="./logo.png"> -->
+                                <img alt="logo" style="width: 40%" src="./png.png" />
+                            </a>
+                        </div>
+                        <div class="bar-menu">
+                            <i class="fa-solid fa-bars"></i>
+                        </div>
+                    </div>
+                    <nav class="navbar">
+                        <ul class="navbar-links">
+                            <li class="navbar-dropdown">
+                                <a href="index.html#">Home</a>
+                            </li>
+                            <li class="navbar-dropdown">
+                                <a href="about.html">About</a>
+                                <div class="dropdown">
+                                    <a href="about.html">About MSA</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="about.html#const">Constitution</a>
+                                    <a href="about.html#committees">Committees</a>
+                                </div>
+                            </li>
+                            <li class="navbar-dropdown">
+                                <a href="mgsa.html#">MGSA</a>
+                                <!-- <div class="dropdown">
+                                    <a href="classes.html#arabic">Arabic Dars</a>
+                                    <a href="classes.html#aqeeda">Aqeeda Dars</a>
+                                    <a href="classes.html#jamal">Skh Jamal Diwan</a>
+                                    <a href="classes.html#taha">Skh Taha Hassane</a>
+                                    <a href="classes.html#tarbiya">Tarbiya Halaqas</a>
+                                </div> -->
+                            </li>
+                            <!-- <li class="navbar-dropdown">
+                                <a href="index.html#">Committees</a>
+                                <div class="dropdown">
+                                    <a href="our-campaigns.html">Fundraising</a>
+                                    <a href="https://winsfolio.net/html/ibadah/campaign-details.html">Dawah & Tarbiya</a>
+                                    <a href="https://winsfolio.net/html/ibadah/campaign-details.html">Social Justice</a>
+                                    <a href="https://winsfolio.net/html/ibadah/campaign-details.html">Academic & Prof Dev</a>
+                                    <a href="https://winsfolio.net/html/ibadah/campaign-details.html">Community Service</a>
+                                </div>
+                            </li> -->
+                            <li class="navbar-dropdown">
+                                <a href="events.html#">Annual Events</a>
+                                <div class="dropdown">
+                                    <a href="events.html#iaw">Islam Awareness Week</a>
+                                    <a href="events.html#jip">Justice in Palestine Week</a>
+                                    <a href="events.html#retreat">Retreat</a>
+                                    <a href="events.html#hsc">High School Conference</a>
+                            </li>
+                            <li class="navbar-dropdown">
+                                <a href="about.html#new">New Muslims</a>
+                            </li>
+                            <li class="navbar-dropdown">
+                                <a href="donations.html">Donations</a>
+                            </li>
+                            <li class="navbar-dropdown">
+                                <a href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+        <div class="mobile-nav hmburger-menu" id="mobile-nav" style="display: block">
+            <div class="res-log">
+                <a href="index.html">
+                    <!-- <img src="./logo.png" alt="Responsive Logo" class="white-logo"> -->
+                    <img src="./png.png" style="width: 40%" alt="Responsive Logo" class="white-logo" />
+                </a>
+            </div>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="about.html" href="JavaScript:void(0)">About</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="about.html">About MSA</a>
+                        </li>
+                        <li>
+                            <a href="about.html#const">Constitution</a>
+                        </li>
+                        <li>
+                            <a href="about.html#committees">Committees</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="JavaScript:void(0)">Classes</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="classes.html#arabic">Arabic</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#aqeeda">Aqeeda</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#gamal">Skh Jamal Diwan</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#taha">Skh Taha Hassane</a>
+                        </li>
+                        <li>
+                            <a href="classes.html#tarbiya">Tarbiya Halaqas</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="JavaScript:void(0)">Annual Events</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="events.html#iaw">Islam Awareness Week</a>
+                        </li>
+                        <li>
+                            <a href="events.html#jip">Justice in Palestine Week</a>
+                        </li>
+                        <li>
+                            <a href="events.html#retreat">Retreat</a>
+                        </li>
+                        <li>
+                            <a href="events.html#hsc">High School Conference</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="about.html#new">New Muslims</a>
+                </li>
+                <li>
+                    <a href="donations.html">Donations</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+            <a href="JavaScript:void(0)" id="res-cross"></a>
+        </div>
+    </header>
+    <!-- header end -->
+    <section class="bannr-section" style="background-image: url(./retreat23.jpeg);">
+        <div class="container">
+            <div class="bannr-text">
+                <img src="assets/img/heading-img.png" alt="icon">
+                <h2>About</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section class="gap position-relative">
+        <div class="container">
+            <div class="heading">
+                <img src="assets/img/heading-img.png" alt="icon">
+                <p>MSA UCSD</p>
+                <h2>Welcomes You</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="islamic-history">
+                        <p>MSA at UCSD seeks to advance and retain the Muslim presence in the academic sphere while
+                            maintaining a climate conducive to harmonizing Islamically advised lifestyles with the lives
+                            of Muslims in the university and workforce. By serving as a center of social, educational,
+                            and tangible resources, MSA at UCSD intends to strengthen members to embrace Islamic values
+                            as a source of guidance in their goals to contribute to the well-being of the public and
+                            attain spiritual fulfillment as individuals.</p>
+                        <ul class="list">
+                            <li>Prayer Room</li>
+                            <li>Educational Growth</li>
+                            <li>Multiple Events Every Week</li>
+                            <li>Committees</li>
+                        </ul>
+                        <a href="https://www.instagram.com/direct/t/110472100346514" class="btn">DM to Join Chats!</a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row align-items-end">
+                        <div class="col-lg-5 col-6">
+                            <div class="circle-text">
+                                <img src="assets/img/text-circle.png" class="circle-text-img" alt="circle-img">
+                                <figure class="circle-img">
+                                    <img src="assets/img/circle-img.png" alt="circle-img">
+                                </figure>
+                            </div>
+                            <div class="real-history-book hoverimg">
+                                <figure>
+                                    <img src="./two.jpeg" alt="img">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-6">
+                            <div class="real-history-book two hoverimg">
+                                <figure>
+                                    <img src="./one.jpeg" alt="real-history-boy">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="gap no-top">
+        <div class="container">
+            <div class="fun-facts">
+                <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
+                    <div class="count-style">
+                        <h2 data-max="35" class="ms-animated">35<sup>+</sup></h2>
+                    </div>
+                    <h5>Years of MSA @ UCSD</h5>
+                    <img src="assets/img/fun-facts-1.png" alt="fun-facts">
+                </div>
+                <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
+                    <div class="count-style">
+                        <h2 data-max="100" class="ms-animated">100<sup>+</sup></h2>
+                    </div>
+                    <h5>Active Members</h5>
+                    <img src="assets/img/fun-facts-2.png" alt="fun-facts">
+                </div>
+                <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
+                    <div class="count-style">
+                        <h2 data-max="15" class="ms-animated">15<sup>+</sup></h2>
+                    </div>
+                    <h5>Visting Speakers Per Year</h5>
+                    <img src="assets/img/fun-facts-3.png" alt="fun-facts">
+                </div>
+                <div class="islamic-mosque" style="background-image: url(assets/img/color-bg.jpg);">
+                    <div class="count-style">
+                        <h2 data-max="26" class="ms-animated">100<sup>+</sup></h2>
+                    </div>
+                    <h5>Events Per Year</h5>
+                    <img src="assets/img/fun-facts-4.png" alt="fun-facts">
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="gap position-relative">
+        <div class="container" id="const">
+            <div class="heading">
+                <img src="assets/img/heading-img.png" alt="icon">
+                <p>MSA UCSD</p>
+                <h2>Constitution</h2>
+            </div>
+            <div class="row">
+
+                <div class="islamic-history">
+                    <center>
+                        <p>The Constitution details the foundation of all MSA programming and it is the skeleton that
+                            shapes the way MSA is run. Like any other document used to guide institutions, it gets
+                            updated in order to stay relevant.</p>
+
+
+                        <a href="https://docs.google.com/document/d/1Q5UEV3sQXb3Z0pd-OhJ26XuYqb2KMi1tT9ryFLKM8Hk/edit?pli=1"
+                            target="_blank" class="btn">View Constitution</a>
+                    </center>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="listen-holy" style="background-image: url(./geisel.jpeg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="heading two" id="new">
+                        <p>Welcome</p>
+                        <h2>New Muslims!</h2>
+                        <h6>If you have any questions, please contact us by DMing our account on Instagram!</h6>
+                        <a href="https://www.instagram.com/direct/t/110472100346514" class="btn">DM to Join Chats!</a>
+                    </div>
+                </div>
+                <div class="offset-lg-1 col-lg-5">
+                    <div class="support-us" style="background-image: url(assets/img/color-bg.jpg);">
+                        <h4>The New Muslim Guide</h4>
+                        <h6>Click Below</h6>
+                        <span>For new Muslims, we recommend the New Muslim Guide, which you can view or download below!</span>
+                        <a href="assets/pdf/The-New-Muslim-Guide-English.pdf" class="btn">View or Download</a>
+                    </div>
+                </div>
+            </div>
+            <!-- New row for the YouTube playlist with improved styling, hidden on mobile -->
+            <div class="row justify-content-center mt-5 d-none d-md-flex">
+                <div class="col-12 text-center mb-4" style="margin-top: -200px">
+                    <div class="heading two">
+                        <center>
+                        <h2 style="color: #ffffff; padding-bottom: 5px;">The 5 Pillars of Islam Playlist</h2>
+                    </center>
+                    </div>
+                </div>
+                <div class="col-12 col-md-10 col-lg-8">
+                    <!-- Responsive Embed YouTube Playlist -->
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/videoseries?list=PLzlw6ktB1nfKYvJIC9k8Jnx-B2kWF3xb-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <style>
+        .embed-responsive-item {
+            pointer-events: none;
+        }
+    </style>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var iframe = document.querySelector('.embed-responsive-item');
+
+            iframe.addEventListener('click', function () {
+                this.style.pointerEvents = 'auto';
+            });
+
+            iframe.addEventListener('mouseleave', function () {
+                this.style.pointerEvents = 'none';
+            });
+        });
+
+    </script>
+
+
+    <section class="gap">
+        <div class="container" id="committees">
+            <div class="heading">
+                <img src="assets/img/heading-img.png" alt="icon">
+                <p>MSA UCSD</p>
+                <h2>Committees</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <div class="service">
+                        <!-- <img src="assets/img/service-icon-1.png" alt="img"> -->
+                        <a href="#committees">Academic & Professional Development</a>
+                        <p>Prepare yourself academically and career-wise!</p>
+                    </div>
+                    <div class="service">
+                        <!-- <img src="assets/img/service-icon-2.png" alt="img"> -->
+                        <a href="#committees">Community Service</a>
+                        <p>Give back to the community!</p>
+                    </div>
+                    <div class="service">
+                        <!-- <img src="assets/img/service-icon-2.png" alt="img"> -->
+                        <a href="#committees">Da'wah</a>
+                        <p>Giving Da'wah on campus!</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="video position-relative">
+                        <a data-fancybox="" href="https://youtu.be/lSvKE_m2Ong">
+                            <i>
+                                <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 8.49951L0.5 0.27227L0.5 16.7268L11 8.49951Z" fill="#000"></path>
+                                </svg>
+                            </i>
+                        </a>
+                        <!-- <img src="./panel.jpeg" alt="img"> -->
+                        <img src="assets/img/os.png" alt="img" style="width: 50%;">
+                        <h5 style="padding-top: 20px; font-family: var(--common-font);">A message from Sheikh Omar
+                            Suleiman!</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="service">
+                        <!-- <img src="assets/img/service-icon-3.png" alt="img"> -->
+                        <a href="#committees">Fundraising</a>
+                        <p>Help fundraise money for MSA and charity!</p>
+                    </div>
+                    <div class="service">
+                        <!-- <img src="assets/img/service-icon-4.png" alt="img"> -->
+                        <a href="#committees">Social Justice</a>
+                        <p>Organize events for social justice causes!</p>
+                    </div>
+                    <div class="service">
+                        <!-- <img src="assets/img/service-icon-2.png" alt="img"> -->
+                        <a href="#committees">Tarbiyah</a>
+                        <p>Islamic lectures and events!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="islamic-ayat">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="heading">
+                        <p>Quranic Verses With Translation</p>
+                        <h2>Islamic ayat with translation</h2>
+                    </div>
+                    <div class="slider-ayat owl-carousel">
+                        <div class="ayat item">
+                            <img src="assets/img/ayat.png" alt="ayat">
+                            <h4>O you who  have believed, Seek help through patience and prayers.</h4>
+                            <h5>Al-Baqrah (2) : 153</h5>
+                        </div>
+                        <div class="ayat item">
+                            <img src="assets/img/ayat.png" alt="ayat">
+                            <h4>O you who  have believed, Seek help through patience and prayers.</h4>
+                            <h5>Al-Baqrah (9) : 153</h5>
+                        </div>
+                        <div class="ayat item">
+                            <img src="assets/img/ayat.png" alt="ayat">
+                            <h4>O you who  have believed, Seek help through patience and prayers.</h4>
+                            <h5>Al-Baqrah (1) : 153</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ayat-img">
+                        <img src="https://via.placeholder.com/392x463" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="https://via.placeholder.com/842x649" class="ayat-with-img" alt="ayat-with">
+    </section> -->
+    <footer style="background-image: url(assets/img/footer-img.jpg);margin-bottom: -80px;">
+        <div class="container">
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-logo">
+                            <img src="./png.png" style="width: 40%" alt="logo">
+                            <!-- <h3>MSA UCSD</h3> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="connect-with">
+                            <h4>Connect with us</h4>
+                            <ul class="social-media">
+                                <li>
+                                    <a href="https://www.instagram.com/msaucsd/">
+                                        <i class="fab fa-instagram icon"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/@msa-ucsd"><i class="fab fa-youtube icon"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/groups/msaucsd"><i
+                                            class="fab fa-facebook icon"></i></a>
+                                </li>
+                                <li><a href="https://www.linkedin.com/company/muslim-student-association-ucsd"><i
+                                            class="fa-brands fa-linkedin"></i></a></li>
+                            </ul>
+                        </div> <br>
+                    </div>
+                </div>
+    </footer>
+    <!-- search-popup -->
+    <div class="search-popup">
+        <button class="close-search"><i class="fa-solid fa-xmark"></i></button>
+        <form method="post" action="#">
+            <div class="form-group">
+                <input type="search" name="search-field" value="" placeholder="Search Here" required="">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+    <!-- search-popup end -->
+    <!-- progress -->
+    <div id="progress">
+        <span id="progress-value"><i class="fa-solid fa-up-long"></i></span>
+    </div>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+        // async function fetchPrayerTimes() {
+        //   try {
+        //     const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
+        //     const data = await response.json();
+
+        //     // Function to convert military time to standard time
+        //     const convertTime = (time) => {
+        //       let [hours, minutes] = time.split(':');
+        //       const suffix = hours >= 12 ? "PM" : "AM";
+        //       hours = ((hours + 11) % 12 + 1);
+        //       return `${hours}:${minutes} ${suffix}`;
+        //     };
+
+        //     // Applying the conversion to Fajr and Maghrib times
+        //     document.getElementById('fajr-time2').innerText = convertTime(data.data.timings.Fajr);
+        //     document.getElementById('maghrib-time2').innerText = convertTime(data.data.timings.Maghrib);
+        //   } catch (error) {
+        //     console.error('Error:', error);
+        //   }
+        // }
+        // fetchPrayerTimes();
+
+
+
+
+
+
+        async function fetchPrayerTimes() {
+            try {
+                const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=San%20Diego&country=United%20States&method=2');
+                const data = await response.json();
+                const prayers = ['Fajr', 'Maghrib'];
+
+                prayers.forEach(prayer => {
+                    let time = data.data.timings[prayer];
+                    let hours = parseInt(time.split(':')[0]);
+                    let minutes = time.split(':')[1];
+                    let suffix = hours >= 12 ? "PM" : "AM";
+                    hours = ((hours + 11) % 12 + 1);
+                    let formattedTime = hours.toString() + ':' + minutes + ' ' + suffix;
+                    document.getElementById(prayer.toLowerCase() + '-time').innerText = formattedTime;
+                });
+
+                // For Maghrib and Fajr in specific elements if needed
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        fetchPrayerTimes();
+
+
+    </script>
+
+    <script src="https://kit.fontawesome.com/97ac8d9bb6.js" crossorigin="anonymous"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/circle-progres.js"></script>
+    <!-- fancybox -->
+    <script src="assets/js/audioplayer.js"></script>
+    <script>
+        $(function () {
+            $('audio').audioPlayer();
+        });
+    </script>
+    <script src="assets/js/jquery.fancybox.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
