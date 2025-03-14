@@ -92,6 +92,116 @@
     }
 }
 
+.current-initiatives {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.initiative-card {
+    border: none;
+    border-radius: 15px;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Special styling for Yemen card */
+.yemen-card {
+    transform: scale(1.1);
+    z-index: 1;
+    margin: 20px 0;
+}
+
+.initiative-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.yemen-card:hover {
+    transform: scale(1.15);
+}
+
+.initiative-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.yemen-image {
+    height: 300px;
+}
+
+.initiative-content {
+    padding: 30px;
+}
+
+.yemen-content {
+    padding: 40px;
+}
+
+.initiative-card h4 {
+    color: #386c5c;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.yemen-card h4 {
+    font-size: 32px;
+}
+
+.initiative-card p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.yemen-card p {
+    font-size: 18px;
+}
+
+.initiative-button {
+    display: inline-block;
+    background-color: #386c5c;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.yemen-button {
+    padding: 18px 40px;
+    font-size: 18px;
+}
+
+.section-title {
+    font-size: 42px;
+    color: #333;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .yemen-card {
+        transform: scale(1);
+        margin: 0;
+    }
+    .yemen-card:hover {
+        transform: translateY(-10px);
+    }
+}
+
         </style>
     </head>
     
@@ -356,6 +466,48 @@
             </div>
         </div>
     </section>
+    <section class="current-initiatives">
+        <div class="container">
+            <h2 class="section-title">Current Initiatives</h2>
+            <div class="row align-items-center">
+                <!-- MSA Orphan Sponsorship -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="initiative-card">
+                        <img src="assets/img/or.jpg" alt="Orphan Sponsorship" class="initiative-image">
+                        <div class="initiative-content">
+                            <h4>MSA Orphan Sponsorship</h4>
+                            <p>Support our initiative to sponsor orphans and make a lasting impact in their lives.</p>
+                            <a href="https://forms.gle/psUkqGyQCVBnQ9p96" class="initiative-button" target="_blank">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Build a Masjid in Yemen -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="initiative-card yemen-card">
+                        <img src="assets/img/masjidyemen.jpeg" alt="Masjid in Yemen" class="initiative-image yemen-image">
+                        <div class="initiative-content yemen-content">
+                            <h4>Build a Masjid in Yemen</h4>
+                            <p>Join us in building a house of Allah in Yemen and contribute to the community's spiritual growth.</p>
+                            <a href="https://www.launchgood.com/v4/campaign/help_build_a_masjid_in_yemen_with_msa_ucsd" class="initiative-button yemen-button" target="_blank">Support Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1 Million Meal Project -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="initiative-card">
+                        <img src="assets/img/1milmeals.jpg" alt="1 Million Meals" class="initiative-image">
+                        <div class="initiative-content">
+                            <h4>1 Million Meal Project</h4>
+                            <p>Help us reach our goal of providing 1 million meals to those in need through MATW Project.</p>
+                            <a href="https://aid.usamatwproject.com/1mm/0021" class="initiative-button" target="_blank">Donate Meals</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="gap">
         <div class="container">
             <div class="row">
@@ -530,7 +682,7 @@
                 <!-- UNICEF -->
                 <div class="org-card">
                     <h3 class="org-title">UNICEF</h3>
-                    <p class="org-description">Your donation to UNICEF USA supports the world’s most vulnerable children in receiving the care, protection, and education they need.</p>
+                    <p class="org-description">Your donation to UNICEF USA supports the world's most vulnerable children in receiving the care, protection, and education they need.</p>
                     <a href="https://www.unicefusa.org/what-unicef-does/where-unicef-works/middle-east?form=donate-cro69v2" class="donate-button">Donate Now</a>
                 </div>
     
